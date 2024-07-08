@@ -13,11 +13,19 @@ public:
         }
         return cache[i];
     }
+
+    int cached() const {
+        return next;
+    }
 };
 
+void use_const(Fibonacci const &fib) {
+    std::cout << "cached = " << fib.cached() << std::endl;
+}
+
 int main(int argc, char **argv) {
-    Fibonacci fib0, fib1;
-    std::cout << "fibonacci(10) = " << fib0[10] << std::endl;
-    std::cout << "fibonacci(100) = " << fib1[100] << std::endl;
+    Fibonacci fib;
+    std::cout << "fibonacci(10) = " << fib[10] << std::endl;
+    use_const(fib);
     return 0;
 }
