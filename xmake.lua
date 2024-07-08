@@ -24,3 +24,15 @@ target("exercise04")
 target("exercise05")
     set_kind("binary")
     add_files("exercises/05_constexpr/main.cpp")
+
+target("exercise06")
+    set_kind("binary")
+    add_files("exercises/06_loop/main.cpp")
+
+target("exercise07")
+    set_kind("binary")
+    add_files("exercises/07_struct/main.cpp")
+
+target("exercise08")
+    set_kind("binary")
+    add_files("exercises/08_class/main.cpp")

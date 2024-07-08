@@ -43,3 +43,6 @@ jobs:
           xmake run exercise03
           xmake run exercise04
           xmake run exercise05
+          xmake run exercise06
+          xmake run exercise07
+          xmake run exercise08

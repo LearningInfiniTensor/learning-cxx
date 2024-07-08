@@ -1,5 +1,3 @@
-// See <https://stackoverflow.com/questions/156767/whats-the-difference-between-an-argument-and-a-parameter>.
-
 #include <iostream>
 
 constexpr int fibonacci(int i) {
