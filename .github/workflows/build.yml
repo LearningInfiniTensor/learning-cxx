@@ -36,4 +36,10 @@ jobs:
         run: xmake
 
       - name: xmake run
-        run: xmake run 00_hello_world
+        run: |
+          xmake run exercise00
+          xmake run exercise01
+          xmake run exercise02
+          xmake run exercise03
+          xmake run exercise04
+          xmake run exercise05
