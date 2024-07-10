@@ -1,3 +1,4 @@
+#include <cassert>
 #include <iostream>
 
 class BoxedFibonacci {
@@ -9,7 +10,9 @@ public:
         : cache(new size_t[128]{0, 1}), next(2) {}
     BoxedFibonacci(BoxedFibonacci &&other) noexcept
         : cache(std::exchange(other.cache, nullptr)),
-          next(std::exchange(other.next, 0)) {}
+          next(std::exchange(other.next, 0)) {
+        std::cout << "Move Fibonacci with next = " << next << std::endl;
+    }
     ~BoxedFibonacci() {
         std::cout << "Drop Fibonacci with next = " << next << std::endl;
         delete[] cache;
@@ -21,11 +24,20 @@ public:
         }
         return cache[i];
     }
+
+    bool is_available() const {
+        return cache;
+    }
 };
 
 int main(int argc, char **argv) {
-    BoxedFibonacci fib0, fib1;
-    std::cout << "fibonacci(10) = " << fib0[10] << std::endl;
-    std::cout << "fibonacci(100) = " << fib1[100] << std::endl;
+    BoxedFibonacci fib;
+    std::cout << "fibonacci(10) = " << fib[10] << std::endl;
+
+    auto fib_ = std::move(fib);
+    assert(!fib.is_available());
+    assert(fib_.is_available());
+    std::cout << "fibonacci(12) = " << fib_[12] << std::endl;
+
     return 0;
 }

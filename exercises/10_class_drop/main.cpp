@@ -20,8 +20,7 @@ public:
 };
 
 int main(int argc, char **argv) {
-    BoxedFibonacci fib0, fib1;
-    std::cout << "fibonacci(10) = " << fib0[10] << std::endl;
-    std::cout << "fibonacci(100) = " << fib1[100] << std::endl;
+    BoxedFibonacci fib;
+    std::cout << "fibonacci(10) = " << fib[10] << std::endl;
     return 0;
 }

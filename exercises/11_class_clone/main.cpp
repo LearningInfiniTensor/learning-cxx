@@ -9,6 +9,7 @@ public:
         : cache(new size_t[128]{0, 1}), next(2) {}
     BoxedFibonacci(BoxedFibonacci const &other)
         : cache(new size_t[128]), next(other.next) {
+        std::cout << "Clone Fibonacci with next = " << next << std::endl;
         std::memcpy(cache, other.cache, sizeof(size_t) * next);
     }
     ~BoxedFibonacci() {

@@ -1,8 +1,8 @@
-// See <https://stackoverflow.com/questions/156767/whats-the-difference-between-an-argument-and-a-parameter>.
+// READ: <https://stackoverflow.com/questions/156767/whats-the-difference-between-an-argument-and-a-parameter>
 
 #include <iostream>
 
-void func(int param) {
+static void func(int param) {
     std::cout << "befor add: " << param << std::endl;
     param += 1;
     std::cout << "after add: " << param << std::endl;
