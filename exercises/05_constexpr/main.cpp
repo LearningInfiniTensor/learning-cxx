@@ -1,6 +1,6 @@
 #include "../exercise.h"
 
-constexpr int fibonacci(int i) {
+constexpr unsigned long long fibonacci(int i) {
     switch (i) {
         case 0:
             return 0;
@@ -13,10 +13,11 @@ constexpr int fibonacci(int i) {
 
 int main(int argc, char **argv) {
     constexpr auto FIB20 = fibonacci(20);
+    ASSERT(FIB20 == 6765, "fibonacci(20) should be 6765");
     std::cout << "fibonacci(20) = " << FIB20 << std::endl;
 
     // TODO: 观察错误信息，修改一处，使代码编译运行
-    constexpr auto ANS_N = 30;
+    constexpr auto ANS_N = 100;
     constexpr auto ANS = fibonacci(ANS_N);
     std::cout << "fibonacci(" << ANS_N << ") = " << ANS << std::endl;
 
