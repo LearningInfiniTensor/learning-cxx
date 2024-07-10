@@ -2,12 +2,12 @@
 
 struct Fibonacci {
     unsigned long long cache[128];
-    int next;
+    int cached;
 
     // TODO: 实现正确的缓存优化斐波那契计算
     unsigned long long get(int i) {
-        for (; false; ++next) {
-            cache[next] = cache[next - 1] + cache[next - 2];
+        for (; false; ++cached) {
+            cache[cached] = cache[cached - 1] + cache[cached - 2];
         }
         return cache[i];
     }

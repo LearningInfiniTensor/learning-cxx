@@ -44,3 +44,19 @@ target("exercise09")
 target("exercise10")
     set_kind("binary")
     add_files("10_method_const/main.cpp")
+
+target("exercise11")
+    set_kind("binary")
+    add_files("11_class/main.cpp")
+
+target("exercise12")
+    set_kind("binary")
+    add_files("12_class_deconstruct/main.cpp")
+
+target("exercise13")
+    set_kind("binary")
+    add_files("13_class_clone/main.cpp")
+
+target("exercise14")
+    set_kind("binary")
+    add_files("14_class_move/main.cpp")

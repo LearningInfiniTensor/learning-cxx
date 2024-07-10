@@ -3,10 +3,10 @@
 // TODO: 改正函数实现，实现正确的缓存优化斐波那契计算
 static unsigned long long fibonacci(int i) {
     // TODO: 为缓存设置正确的初始值
-    static unsigned long long cache[128], next = 2;
+    static unsigned long long cache[128], cached = 2;
     // TODO: 设置正确的循环条件
-    for (; false; ++next) {
-        cache[next] = cache[next - 1] + cache[next - 2];
+    for (; false; ++cached) {
+        cache[cached] = cache[cached - 1] + cache[cached - 2];
     }
     return cache[i];
 }
