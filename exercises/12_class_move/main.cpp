@@ -1,5 +1,5 @@
+#include "../exercise.h"
 #include <cassert>
-#include <iostream>
 
 class BoxedFibonacci {
     size_t *cache;

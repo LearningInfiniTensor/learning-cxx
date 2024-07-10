@@ -31,64 +31,16 @@ target("exercise06")
 
 target("exercise07")
     set_kind("binary")
-    add_files("07_struct/main.cpp")
+    add_files("07_enum&union/main.cpp")
 
 target("exercise08")
     set_kind("binary")
-    add_files("08_class/main.cpp")
+    add_files("08_trivial/main.cpp")
 
 target("exercise09")
     set_kind("binary")
-    add_files("09_class_method_const/main.cpp")
+    add_files("09_method/main.cpp")
 
 target("exercise10")
     set_kind("binary")
-    add_files("10_class_drop/main.cpp")
-
-target("exercise11")
-    set_kind("binary")
-    add_files("11_class_clone/main.cpp")
-
-target("exercise12")
-    set_kind("binary")
-    add_files("12_class_move/main.cpp")
-
-target("exercise13")
-    set_kind("binary")
-    add_files("13_std_array/main.cpp")
-
-target("exercise14")
-    set_kind("binary")
-    add_files("14_std_vector/main.cpp")
-
-target("exercise15")
-    set_kind("binary")
-    add_files("15_std_deque/main.cpp")
-
-target("exercise16")
-    set_kind("binary")
-    add_files("16_std_map/main.cpp")
-
-target("exercise17")
-    set_kind("binary")
-    add_files("17_std_accumulate/main.cpp")
-
-target("exercise18")
-    set_kind("binary")
-    add_files("18_std_transform/main.cpp")
-
-target("exercise19")
-    set_kind("binary")
-    add_files("19_std_fs/main.cpp")
-
-target("exercise20")
-    set_kind("binary")
-    add_files("20_std_thread/main.cpp")
-
-target("exercise21")
-    set_kind("binary")
-    add_files("21_std_mutex/main.cpp")
-
-target("exercise22")
-    set_kind("binary")
-    add_files("22_template/main.cpp")
+    add_files("10_method_const/main.cpp")

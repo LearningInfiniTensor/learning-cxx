@@ -1,4 +1,4 @@
-#include <iostream>
+#include "../exercise.h"
 
 class Fibonacci {
     size_t cache[128];
