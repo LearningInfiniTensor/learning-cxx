@@ -29,11 +29,8 @@ jobs:
         with:
           xmake-version: latest
 
-      - name: xmake config
-        run: xmake f
-
-      - name: xmake build
+      - name: Build
         run: xmake
 
-      - name: xmake run
-        run: xmake run summary --simple
+      - name: Summary
+        run: xmake run summary
