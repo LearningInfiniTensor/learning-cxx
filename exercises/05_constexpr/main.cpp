@@ -1,4 +1,4 @@
-#include <iostream>
+#include "../exercise.h"
 
 constexpr int fibonacci(int i) {
     switch (i) {
@@ -12,11 +12,13 @@ constexpr int fibonacci(int i) {
 }
 
 int main(int argc, char **argv) {
-    constexpr auto FIB25 = fibonacci(25);
-    std::cout << "fibonacci(25) = " << FIB25 << std::endl;
+    constexpr auto FIB20 = fibonacci(20);
+    std::cout << "fibonacci(20) = " << FIB20 << std::endl;
 
-    auto fib30 = fibonacci(30);
-    std::cout << "fibonacci(30) = " << fib30 << std::endl;
+    // TODO: 观察错误信息，修改一处，使代码编译运行
+    constexpr auto ANS_N = 30;
+    constexpr auto ANS = fibonacci(ANS_N);
+    std::cout << "fibonacci(" << ANS_N << ") = " << ANS << std::endl;
 
     return 0;
 }
