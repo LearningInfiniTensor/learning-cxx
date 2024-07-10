@@ -1,10 +1,20 @@
 add_rules("mode.debug", "mode.release")
 set_encodings("utf-8")
 
+target("test")
+    set_kind("static")
+    set_languages("cxx17")
+    add_defines(string.format("__XMAKE__=\"%s\"", os.scriptdir():gsub("\\", "/")))
+    add_files("learn/test.cpp")
+
 target("learn")
     set_kind("binary")
-
-    add_defines(string.format("__XMAKE__=\"%s\"", os.scriptdir():gsub("\\", "/")))
-
     set_languages("cxx17")
-    add_files("learn/main.cpp")
+    add_deps("test")
+    add_files("learn/learn.cpp")
+
+target("summary")
+    set_kind("binary")
+    set_languages("cxx17")
+    add_deps("test")
+    add_files("learn/summary.cpp")

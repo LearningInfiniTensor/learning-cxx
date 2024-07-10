@@ -36,4 +36,4 @@ jobs:
         run: xmake
 
       - name: xmake run
-        run: xmake run learn
+        run: xmake run summary --simple
