@@ -1,10 +1,10 @@
 // READ: <https://stackoverflow.com/questions/156767/whats-the-difference-between-an-argument-and-a-parameter>
-// TODO: 为下列 ASSERT 填写正确的值
 
 #include "../exercise.h"
 
-void func(int);
+static void func(int);
 
+// TODO: 为下列 ASSERT 填写正确的值
 int main(int argc, char **argv) {
     auto arg = 99;
     ASSERT(arg == ?, "arg should be ?");
@@ -15,7 +15,8 @@ int main(int argc, char **argv) {
     return 0;
 }
 
-static void func(int param) {
+// TODO: 为下列 ASSERT 填写正确的值
+void func(int param) {
     ASSERT(param == ?, "param should be ?");
     std::cout << "befor add: " << param << std::endl;
     param += 1;
