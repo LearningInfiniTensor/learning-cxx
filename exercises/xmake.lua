@@ -41,7 +41,7 @@ target("exercise11")
     add_files("11_class/main.cpp")
 
 target("exercise12")
-    add_files("12_class_deconstruct/main.cpp")
+    add_files("12_class_destruct/main.cpp")
 
 target("exercise13")
     add_files("13_class_clone/main.cpp")
@@ -54,5 +54,8 @@ target("exercise15")
 
 target("exercise16")
     add_files("16_class_virtual/main.cpp")
+
+target("exercise17")
+    add_files("17_class_virtual_destruct/main.cpp")
 
 -- TODO: template; array; vector; deque; map; transform; accumulate; fs; thread; mutex;
