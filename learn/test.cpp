@@ -36,9 +36,10 @@ static bool test_exercise(std::ostream &os, int n, const char *log) {
 
 bool test_exercise(int n, const char *log) {
     if (log) {
-        auto log_ = fs::absolute(fs::path(XMAKE) / "log" / log);
-        auto log__ = log_.string();
-        return test_exercise(std::fstream(log_, std::ios::out | std::ios::app), n, log__.c_str());
+        const auto log_ = fs::absolute(fs::path(XMAKE) / "log" / log);
+        const auto log__ = log_.string();
+        auto file = std::fstream(log_, std::ios::out | std::ios::app);
+        return test_exercise(file, n, log__.c_str());
     } else {
         return test_exercise(std::cout, n, nullptr);
     }
