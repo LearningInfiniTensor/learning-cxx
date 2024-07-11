@@ -27,18 +27,17 @@ COLORFUL(34, blue)
 
 #undef COLORFUL
 
-#define ASSERT(COND, MSG)                                   \
-    if (!(COND)) {                                          \
-        std::cerr << red("Assertion failed: ") << std::endl \
-                  << std::endl                              \
-                  << #COND << std::endl                     \
-                  << std::endl                              \
-                  << green("Message:") << std::endl         \
-                  << std::endl                              \
-                  << MSG << std::endl                       \
-                  << std::endl;                             \
-        exit(1);                                            \
+#define ASSERT(COND, MSG)                                                                         \
+    if (!(COND)) {                                                                                \
+        std::cerr << red("Assertion failed at line #") << red(__LINE__) << red(": ") << std::endl \
+                  << std::endl                                                                    \
+                  << #COND << std::endl                                                           \
+                  << std::endl                                                                    \
+                  << green("Message:") << std::endl                                               \
+                  << std::endl                                                                    \
+                  << MSG << std::endl                                                             \
+                  << std::endl;                                                                   \
+        exit(1);                                                                                  \
     }
-
 
 #endif// __EXERCISE_H__
