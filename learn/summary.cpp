@@ -6,7 +6,7 @@
 #include <sstream>
 #include <vector>
 
-constexpr auto MAX_EXERCISE = 17;
+constexpr auto MAX_EXERCISE = 20;
 
 int main(int argc, char **argv) {
     if (argc == 1) {

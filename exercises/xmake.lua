@@ -58,4 +58,13 @@ target("exercise16")
 target("exercise17")
     add_files("17_class_virtual_destruct/main.cpp")
 
--- TODO: template; array; vector; deque; map; transform; accumulate; fs; thread; mutex;
+target("exercise18")
+    add_files("18_function_template/main.cpp")
+
+target("exercise19")
+    add_files("19_runtime_datatype/main.cpp")
+
+target("exercise20")
+    add_files("20_class_template/main.cpp")
+
+-- TODO: array; vector; deque; map; forward_list; transform; accumulate; fs; thread; mutex;
