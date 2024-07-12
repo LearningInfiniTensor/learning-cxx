@@ -12,6 +12,15 @@
 
    > **NOTICE** xmake 仅是构建工具，不包括工具链。仍需先安装 C/C++ 工具链（MSVC、GCC 或 Clang）才能开始使用项目。
 
+   > **NOTICE** 有报告称 xmake 在 Windows 上存在定位工具链失败的问题。因此推荐按下列规则选择学习平台：
+   >
+   > 1. 如果已经在默认位置安装 Visual Studio/Ms C++ Build Tools，则推荐原生 Windows 学习本项目；
+   > 2. 如果已经配置好 WSL2，则推荐 WSL2 + GCC/Clang 学习本项目；
+   > 3. 如果未配置过任何工具链，则推荐在默认位置安装 Visual Studio；
+   > 4. 不推荐 MinGW 或 Cygwin，除非足够熟悉这些环境，可以自行完成配置；
+
+   > **NOTICE** 如果仍遇到工具链问题，推荐浏览 [xmake issues](https://github.com/xmake-io/xmake/issues)；
+
 2. 克隆仓库
 
    ```shell
