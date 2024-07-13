@@ -22,7 +22,13 @@ static int process_run(const char *cmd, const char *proj, const char *log) {
     return std::system(command.c_str());
 }
 
-static bool test_exercise(int n, std::ostream &os, const char *log) {
+static bool test_exercise(int n, const char *log) {
+    std::ofstream file;
+    if (log) {
+        file.open(log, std::ios::out | std::ios::app);
+    }
+    std::ostream &os = log ? file : std::cout;
+
     char str[] = "exerciseXX";
     std::sprintf(str, "exercise%02d", n);
 
@@ -39,7 +45,7 @@ Log &Log::operator<<(unsigned int n) {
     namespace fs = std::filesystem;
     bool pass;
     if (std::holds_alternative<Console>(this->dst)) {
-        pass = test_exercise(n, std::cout, nullptr);
+        pass = test_exercise(n, nullptr);
     } else if (std::holds_alternative<Null>(this->dst)) {
 #if defined(_WIN32)
         constexpr auto null = "nul";
@@ -48,11 +54,11 @@ Log &Log::operator<<(unsigned int n) {
 #else
 #error "Unsupported platform"
 #endif
-        pass = test_exercise(n, std::ofstream(null, std::ios::out | std::ios::app), null);
+        pass = test_exercise(n, null);
     } else {
         const auto path = fs::absolute(fs::path(XMAKE) / "log" / std::get<fs::path>(this->dst));
         const auto path_string = path.string();
-        pass = test_exercise(n, std::ofstream(path, std::ios::out | std::ios::app), path_string.c_str());
+        pass = test_exercise(n, path_string.c_str());
     }
     {
         std::lock_guard lock(this->mutex);
