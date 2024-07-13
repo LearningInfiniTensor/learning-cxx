@@ -1,4 +1,5 @@
-﻿#include <cstdlib>
+﻿#include "test.h"
+#include <cstdlib>
 #include <filesystem>
 #include <fstream>
 #include <iostream>
@@ -21,26 +22,41 @@ static int process_run(const char *cmd, const char *proj, const char *log) {
     return std::system(command.c_str());
 }
 
-static bool test_exercise(std::ostream &os, int n, const char *log) {
+static bool test_exercise(int n, std::ostream &os, const char *log) {
     char str[] = "exerciseXX";
     std::sprintf(str, "exercise%02d", n);
 
     os << "\x1b[34m" << str << " testing" << "\x1b[0m" << std::endl
-       << "==================" << std::endl
-       << std::endl;
+       << "==================" << std::endl;
     auto pass = process_run("", str, log) == EXIT_SUCCESS && process_run("run", str, log) == EXIT_SUCCESS;
     os << "=================" << std::endl
-       << "\x1b[" << (pass ? 32 : 31) << 'm' << str << (pass ? " passed" : " failed") << "\x1b[0m" << std::endl;
+       << "\x1b[" << (pass ? 32 : 31) << 'm' << str << (pass ? " passed" : " failed") << "\x1b[0m" << std::endl
+       << std::endl;
     return pass;
 }
 
-bool test_exercise(int n, const char *log) {
-    if (log) {
-        const auto log_ = fs::absolute(fs::path(XMAKE) / "log" / log);
-        const auto log__ = log_.string();
-        auto file = std::fstream(log_, std::ios::out | std::ios::app);
-        return test_exercise(file, n, log__.c_str());
+Log &Log::operator<<(unsigned int n) {
+    namespace fs = std::filesystem;
+    bool pass;
+    if (std::holds_alternative<Console>(this->dst)) {
+        pass = test_exercise(n, std::cout, nullptr);
+    } else if (std::holds_alternative<Null>(this->dst)) {
+#if defined(_WIN32)
+        constexpr auto null = "nul";
+#elif defined(__linux__) || defined(__unix__)
+        constexpr auto null = "/dev/null";
+#else
+#error "Unsupported platform"
+#endif
+        pass = test_exercise(n, std::ofstream(null, std::ios::out | std::ios::app), null);
     } else {
-        return test_exercise(std::cout, n, nullptr);
+        const auto path = fs::absolute(fs::path(XMAKE) / "log" / std::get<fs::path>(this->dst));
+        const auto path_string = path.string();
+        pass = test_exercise(n, std::ofstream(path, std::ios::out | std::ios::app), path_string.c_str());
     }
+    {
+        std::lock_guard lock(this->mutex);
+        this->result.push_back(pass);
+    }
+    return *this;
 }

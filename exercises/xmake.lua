@@ -67,4 +67,10 @@ target("exercise19")
 target("exercise20")
     add_files("20_class_template/main.cpp")
 
--- TODO: array; vector; deque; map; forward_list; transform; accumulate; fs; thread; mutex;
+target("exercise21")
+    add_files("21_template_const/main.cpp")
+
+target("exercise22")
+    add_files("22_std_array/main.cpp")
+
+-- TODO: vector; vector<bool>; deque; map; forward_list; string; transform; accumulate; fs; thread; mutex;

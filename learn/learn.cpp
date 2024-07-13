@@ -10,6 +10,6 @@ int main(int argc, char **argv) {
     if (1 != std::sscanf(argv[1], "%d", &num)) {
         std::cerr << "Invalid exercise number: " << argv[1] << std::endl;
     };
-    test_exercise(num, nullptr);
+    Log{Console{}} << num;
     return EXIT_SUCCESS;
 }
