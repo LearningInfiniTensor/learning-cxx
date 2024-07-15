@@ -8,7 +8,7 @@
 #include <thread>
 #include <vector>
 
-constexpr auto MAX_EXERCISE = 22;
+constexpr auto MAX_EXERCISE = 29;
 
 int main(int argc, char **argv) {
     if (argc == 1) {
