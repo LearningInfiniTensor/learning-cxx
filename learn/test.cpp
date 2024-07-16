@@ -51,6 +51,8 @@ Log &Log::operator<<(unsigned int n) {
         constexpr auto null = "nul";
 #elif defined(__linux__) || defined(__unix__)
         constexpr auto null = "/dev/null";
+#elif defined(__MACOSX__) || defined(__APPLE__)
+        constexpr auto null = "/dev/null";
 #else
 #error "Unsupported platform"
 #endif
