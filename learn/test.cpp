@@ -49,7 +49,7 @@ Log &Log::operator<<(unsigned int n) {
     } else if (std::holds_alternative<Null>(this->dst)) {
 #if defined(_WIN32)
         constexpr auto null = "nul";
-#elif defined(__linux__) || defined(__unix__)
+#elif defined(__linux__) || defined(__unix__) || defined(__MACOSX__) || defined(__APPLE__)
         constexpr auto null = "/dev/null";
 #else
 #error "Unsupported platform"
