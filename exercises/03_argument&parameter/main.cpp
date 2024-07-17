@@ -2,7 +2,7 @@
 
 #include "../exercise.h"
 
-static void func(int);
+void func(int);
 
 // TODO: 为下列 ASSERT 填写正确的值
 int main(int argc, char **argv) {

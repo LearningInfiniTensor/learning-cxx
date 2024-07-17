@@ -10,7 +10,6 @@ int main(int argc, char **argv) {
     return 0;
 }
 
-// TODO: 补全函数定义，但不要移动代码行
-// THINK: `static` 修饰函数有什么效果？
-static int add(int a, int b) {
+int add(int a, int b) {
+    // TODO: 补全函数定义，但不要移动代码行
 }

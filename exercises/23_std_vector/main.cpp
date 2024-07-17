@@ -63,7 +63,7 @@ int main(int argc, char **argv) {
             auto capacity = vec.capacity();
             vec.resize(16);
             ASSERT(vec.size() == ?, "Fill in the correct value.");
-            ASSERT(vec.capacity() == ?, "Fill in the correct identifier.");
+            ASSERT(vec.capacity() == ?, "Fill in a correct identifier.");
         }
         {
             vec.reserve(256);
