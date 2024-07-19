@@ -1,4 +1,5 @@
 #include "../exercise.h"
+#include <cstddef>
 
 // READ: 移动构造函数 <https://zh.cppreference.com/w/cpp/language/move_constructor>
 // READ: 移动赋值 <https://zh.cppreference.com/w/cpp/language/move_assignment>
@@ -10,23 +11,43 @@ class DynFibonacci {
 
 public:
     // TODO: 实现动态设置容量的构造器
-    DynFibonacci(int capacity): cache(new ?), cached(?) {}
+    DynFibonacci(int capacity) : cache(new size_t[capacity]), cached(2) {
+        cache[0] = 0;
+        cache[1] = 1;
+    }
 
     // TODO: 实现移动构造器
-    DynFibonacci(DynFibonacci &&other) noexcept = delete;
+    DynFibonacci(DynFibonacci &&other) : cache(other.cache), cached(other.cached) {
+        other.cache = nullptr;
+    }
 
     // TODO: 实现移动赋值
     // NOTICE: ⚠ 注意移动到自身问题 ⚠
-    DynFibonacci &operator=(DynFibonacci &&other) noexcept = delete;
+    DynFibonacci &operator=(DynFibonacci &&other) {
+        this->cache = other.cache;
+        this->cached = other.cached;
+        if (other.cache != this->cache) {
+            other.cache = nullptr;
+        }
+        return *this;
+    }
 
     // TODO: 实现析构器，释放缓存空间
-    ~DynFibonacci();
+    ~DynFibonacci() {
+        if (cache != nullptr) {
+            delete[] cache;
+        }
+    }
 
     // TODO: 实现正确的缓存优化斐波那契计算
     size_t operator[](int i) {
-        for (; false; ++cached) {
+        for (; cached <= i; ++cached) {
             cache[cached] = cache[cached - 1] + cache[cached - 2];
         }
+        return cache[i];
+    }
+
+    size_t operator[](int i) const {
         return cache[i];
     }
 
