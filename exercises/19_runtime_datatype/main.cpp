@@ -34,12 +34,12 @@ int main(int argc, char **argv) {
     xf.f = 5.f;
     auto yf = sigmoid_dyn(xf);
     ASSERT(yf.type == DataType::Float, "type mismatch");
-    ASSERT(yf.f == 1 / (1 + exp(-5.f)), "sigmoid float");
+    ASSERT(yf.f == 1 / (1 + std::exp(-5.f)), "sigmoid float");
 
     TaggedUnion xd{DataType::Double};
     xd.d = 5.0;
     auto yd = sigmoid_dyn(xd);
     ASSERT(yd.type == DataType::Double, "type mismatch");
-    ASSERT(yd.d == 1 / (1 + exp(-5.0)), "sigmoid double");
+    ASSERT(yd.d == 1 / (1 + std::exp(-5.0)), "sigmoid double");
     return 0;
 }
