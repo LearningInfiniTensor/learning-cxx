@@ -80,7 +80,7 @@ int main(int argc, char **argv) {
         auto t0 = Tensor4D(s0, d0);
         auto t1 = Tensor4D(s1, d1);
         t0 += t1;
-        for (unsigned int i = 0; i < sizeof(d0) / sizeof(int); i++) {
+        for (unsigned int i = 0; i < sizeof(d0) / sizeof(float); i++) {
             ASSERT(t0.data[i] == 7.f, "Every element of t0 should be 7 after adding t1 to it.");
         }
     }
@@ -102,8 +102,8 @@ int main(int argc, char **argv) {
         auto t0 = Tensor4D(s0, d0);
         auto t1 = Tensor4D(s1, d1);
         t0 += t1;
-        for (unsigned int i = 0; i < sizeof(d0) / sizeof(int); i++) {
-            ASSERT(t0.data[i] == t0.data[i] + 1, "Every element of t0 should be incremented by 1 after adding t1 to it.");
+        for (unsigned int i = 0; i < sizeof(d0) / sizeof(double); i++) {
+            ASSERT(t0.data[i] == d0[i] + 1, "Every element of t0 should be incremented by 1 after adding t1 to it.");
         }
     }
 }
