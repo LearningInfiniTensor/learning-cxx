@@ -59,3 +59,9 @@
    ```
 
    总结所有练习通过情况。
+
+## 其他学习资源
+
+- [Microsoft：欢迎回到 C++](https://learn.microsoft.com/zh-cn/cpp/cpp/welcome-back-to-cpp-modern-cpp?view=msvc-170)
+- ~~[Google 风格指南（中文版）](https://zh-google-styleguide.readthedocs.io/en/latest/google-cpp-styleguide/contents.html)~~（deprecated）
+- [360 安全规则集合](https://github.com/Qihoo360/safe-rules)
