@@ -1,6 +1,7 @@
-// READ: <https://stackoverflow.com/questions/156767/whats-the-difference-between-an-argument-and-a-parameter>
-
 #include "../exercise.h"
+
+// READ: <https://stackoverflow.com/questions/156767/whats-the-difference-between-an-argument-and-a-parameter>
+// THINK: 参数都有哪些传递方式？如何选择传递方式？
 
 void func(int);
 
