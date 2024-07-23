@@ -3,7 +3,7 @@
 // TODO: 改正函数实现，实现正确的缓存优化斐波那契计算
 static unsigned long long fibonacci(int i) {
     // TODO: 为缓存设置正确的初始值
-    static unsigned long long cache[128], cached;
+    static unsigned long long cache[96], cached;
     // TODO: 设置正确的循环条件
     for (; false; ++cached) {
         cache[cached] = cache[cached - 1] + cache[cached - 2];
@@ -19,8 +19,8 @@ int main(int argc, char **argv) {
     ASSERT(fibonacci(3) == 2, "fibonacci(3) should be 2");
     ASSERT(fibonacci(10) == 55, "fibonacci(10) should be 55");
 
-    auto fib100 = fibonacci(100);
-    std::cout << "fibonacci(100) = " << fib100 << std::endl;
-    ASSERT(fib100 == 3736710778780434371, "fibonacci(100) should be 3736710778780434371");
+    auto fib90 = fibonacci(90);
+    std::cout << "fibonacci(90) = " << fib90 << std::endl;
+    ASSERT(fib90 == 2880067194370816120, "fibonacci(90) should be 2880067194370816120");
     return 0;
 }
