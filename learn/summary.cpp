@@ -9,7 +9,7 @@
 #include <thread>
 #include <vector>
 
-constexpr auto MAX_EXERCISE = 29;
+constexpr auto MAX_EXERCISE = 33;
 
 int main(int argc, char **argv) {
     if (argc == 1) {
@@ -34,13 +34,15 @@ int main(int argc, char **argv) {
         std::vector<std::thread> threads;
         threads.reserve(concurrency);
 
+        std::cout << "concurrency: " << concurrency << std::endl;
         Log log{Null{}};
         for (auto i = 0u; i <= concurrency; ++i) {
-            threads.emplace_back([&log, &k] {
-                int i = k.fetch_add(1);
-                while (i <= MAX_EXERCISE) {
-                    log << i;
-                    i = k.fetch_add(1);
+            threads.emplace_back([i, &log, &k] {
+                int j = k.fetch_add(1);
+                while (j <= MAX_EXERCISE) {
+                    std::printf("run %d at %d\n", j, i);
+                    log << j;
+                    j = k.fetch_add(1);
                 }
             });
         }
