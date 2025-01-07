@@ -1,4 +1,5 @@
 add_rules("mode.debug", "mode.release")
+add_links("pthread")
 set_encodings("utf-8")
 set_warnings("all")
 set_languages("cxx17")
