@@ -16,5 +16,4 @@ int main(int argc, char **argv) {
     ASSERT(func(2) == 8 , "static variable value incorrect");
     ASSERT(func(1) == 9, "static variable value incorrect");
     return 0;
-    return 0;
 }
