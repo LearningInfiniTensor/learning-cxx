@@ -11,15 +11,16 @@ unsigned long long fibonacci(int i) {
             return 1;
         default:
             // TODO: 补全三目表达式缺失的部分
-            return <condition> ? <cache> : (arr[i] = fibonacci(i - 1) + fibonacci(i - 2));
-    }
+            return arr[i] != 0 ? arr[i] : (arr[i] = fibonacci(i - 1) + fibonacci(i - 2));
+    }//对于每个 fibonacci(i)，在计算时会检查 arr[i] 是否已经存储值。如果已经存储，则直接返回存储的结果，这样就避免了重复计算。
 }
 
 int main(int argc, char **argv) {
     // TODO: 为此 ASSERT 填写正确的值
-    ASSERT(sizeof(arr) == ?, "sizeof array is size of all its elements");
+    ASSERT(sizeof(arr) == 720, "sizeof array is size of all its elements");
     // ---- 不要修改以下代码 ----
     ASSERT(fibonacci(2) == 1, "fibonacci(2) should be 1");
+    printf("%llu\n", fibonacci(20));
     ASSERT(fibonacci(20) == 6765, "fibonacci(20) should be 6765");
     ASSERT(fibonacci(80) == 23416728348467685, "fibonacci(80) should be 23416728348467685");
     return 0;
