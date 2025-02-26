@@ -16,7 +16,11 @@ public:
     }
 
     // TODO: 实现复制构造器
-    DynFibonacci(DynFibonacci const &) = delete;
+    DynFibonacci(DynFibonacci const &other) : cache(other.cache), cached(other.cached){
+        for(int i = 0; i < cached; i++){//通过cache(other.cache)复制一个新的数组，通过cached(other.cached)把other的cached赋值给cached
+            cache[i] = other.cache[i];
+        }//此时要求第一个类必须先跑一次get函数，把cached结果更新才能保证正确性
+    }
 
     // TODO: 实现析构器，释放缓存空间
     ~DynFibonacci(){
