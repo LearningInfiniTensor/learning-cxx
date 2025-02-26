@@ -10,9 +10,14 @@ struct A {
         return 'A';
     }
 };
+//virtual_name() 是一个虚函数。这是因为它被声明为 virtual。
+//虚函数的一个主要特性是它们支持多态性（polymorphism）。
+//这意味着，如果 A 被用作基类，并且派生类（derived class）重写了 virtual_name() 函数，那么通过基类指针或引用调用 virtual_name() 时，将调用派生类的版本，而不是基类的版本。
+//direct_name() 是一个普通函数（也称为非虚函数）。它不支持多态性。
+//无论 A 的对象是通过基类还是派生类的类型来访问，调用 direct_name() 总是执行 A 类中定义的版本。
 struct B : public A {
     // READ: override <https://zh.cppreference.com/w/cpp/language/override>
-    char virtual_name() const override {
+    char virtual_name() const override {//override检查函数签名是否和A一致
         return 'B';
     }
     char direct_name() const {
@@ -21,7 +26,7 @@ struct B : public A {
 };
 struct C : public B {
     // READ: final <https://zh.cppreference.com/w/cpp/language/final>
-    char virtual_name() const final {
+    char virtual_name() const final {//final不允许后面的继承类改写virtual_name()函数
         return 'C';
     }
     char direct_name() const {
@@ -42,14 +47,14 @@ int main(int argc, char **argv) {
     C c;
     D d;
 
-    ASSERT(a.virtual_name() == '?', MSG);
-    ASSERT(b.virtual_name() == '?', MSG);
-    ASSERT(c.virtual_name() == '?', MSG);
-    ASSERT(d.virtual_name() == '?', MSG);
-    ASSERT(a.direct_name() == '?', MSG);
-    ASSERT(b.direct_name() == '?', MSG);
-    ASSERT(c.direct_name() == '?', MSG);
-    ASSERT(d.direct_name() == '?', MSG);
+    ASSERT(a.virtual_name() == 'A', MSG);
+    ASSERT(b.virtual_name() == 'B', MSG);
+    ASSERT(c.virtual_name() == 'C', MSG);
+    ASSERT(d.virtual_name() == 'C', MSG);
+    ASSERT(a.direct_name() == 'A', MSG);
+    ASSERT(b.direct_name() == 'B', MSG);
+    ASSERT(c.direct_name() == 'C', MSG);
+    ASSERT(d.direct_name() == 'D', MSG);
 
     A &rab = b;
     B &rbc = c;
