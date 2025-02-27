@@ -8,28 +8,52 @@
 // READ: 移动构造函数 <https://zh.cppreference.com/w/cpp/language/move_constructor>
 // READ: 移动赋值 <https://zh.cppreference.com/w/cpp/language/move_assignment>
 // READ: 运算符重载 <https://zh.cppreference.com/w/cpp/language/operators>
-
+//移动构造器（move constructor）允许一个对象将其资源“移动”到另一个新创建的对象中，
+//而不是复制这些资源。这通常用于优化性能，特别是在处理大型数据结构或动态分配的内存时。//
+//移动后，源对象通常处于有效但未定义的状态，这意味着它不应该再被使用，除非它被重新初始化。
 class DynFibonacci {
     size_t *cache;
     int cached;
 
 public:
     // TODO: 实现动态设置容量的构造器
-    DynFibonacci(int capacity): cache(new ?), cached(?) {}
+    DynFibonacci(int capacity): cache(new size_t[capacity]), cached(2) {
+        cache[0] = 0;
+        cache[1] = 1;
+    }
 
     // TODO: 实现移动构造器
-    DynFibonacci(DynFibonacci &&) noexcept = delete;
+    DynFibonacci(DynFibonacci &&other) noexcept : cache(nullptr), cached(0){
+        cache = other.cache;
+        cached = other.cached;
+
+        other.cache = nullptr;
+        other.cached = 0;
+    }
 
     // TODO: 实现移动赋值
     // NOTICE: ⚠ 注意移动到自身问题 ⚠
-    DynFibonacci &operator=(DynFibonacci &&) noexcept = delete;
+    DynFibonacci &operator=(DynFibonacci &&other) noexcept {
+        if (this != &other){
+            delete[] cache;
+
+            cache = other.cache;
+        cached = other.cached;
+
+        other.cache = nullptr;
+        other.cached = 0;
+        }
+        return *this;
+    }
 
     // TODO: 实现析构器，释放缓存空间
-    ~DynFibonacci();
+    ~DynFibonacci(){
+        delete[] cache;
+    }
 
     // TODO: 实现正确的缓存优化斐波那契计算
     size_t operator[](int i) {
-        for (; false; ++cached) {
+        for (; cached < i + 1; ++cached) {
             cache[cached] = cache[cached - 1] + cache[cached - 2];
         }
         return cache[i];
