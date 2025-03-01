@@ -44,7 +44,9 @@ constexpr unsigned long long fibonacci(int i) {
 }
     
 int main(int argc, char **argv) {
-    constexpr auto FIB20 = fibonacci(20);
+    constexpr auto FIB20 = fibonacci(20);//constexpr要求编译的时候就能直接计算，因此编译的时候会直接把20代入
+    //如果使用int i = 20;constexpr auto FIB20 = fibonacci(i);编译就会报错说编译的时候不知道i是多少
+    //但是使用const int i = 20;constexpr auto FIB20 = fibonacci(i);就能正确运行
     ASSERT(FIB20 == 6765, "fibonacci(20) should be 6765");
     std::cout << "fibonacci(20) = " << FIB20 << std::endl;
 
