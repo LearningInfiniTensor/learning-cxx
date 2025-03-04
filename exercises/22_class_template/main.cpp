@@ -9,7 +9,10 @@ struct Tensor4D {
 
     Tensor4D(unsigned int const shape_[4], T const *data_) {
         unsigned int size = 1;
-        // TODO: 填入正确的 shape 并计算 size
+        for(int i = 0; i < 4; i++){
+            size *= shape_[i];
+            shape[i] = shape_[i];
+        }
         data = new T[size];
         std::memcpy(data, data_, size * sizeof(T));
     }
@@ -18,8 +21,16 @@ struct Tensor4D {
     }
 
     // 为了保持简单，禁止复制和移动
-    Tensor4D(Tensor4D const &) = delete;
-    Tensor4D(Tensor4D &&) noexcept = delete;
+    Tensor4D(Tensor4D const &other) : shape(other.shape), data(other.data){
+        
+    }
+    Tensor4D(Tensor4D &&other)  : shape(nullptr), data(nullptr){
+        shape = other.shape;
+        data = other.data;
+
+        other.shape = nullptr;
+        other.data = nullptr;
+    }
 
     // 这个加法需要支持“单向广播”。
     // 具体来说，`others` 可以具有与 `this` 不同的形状，形状不同的维度长度必须为 1。
